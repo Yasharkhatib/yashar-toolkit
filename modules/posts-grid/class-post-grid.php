@@ -56,6 +56,8 @@ class YTK_Post_Grid {
             'posts' => 6,
             'columns' => 3,
             'category' => '',
+            'orderby'  => 'date',
+            'order'   => 'DESC',
         ],
         $atts,
         'ytk_posts_grid'
@@ -66,6 +68,8 @@ class YTK_Post_Grid {
             'post_type'      => 'post',
             'post_status'    => 'publish',
             'posts_per_page' => intval($atts['posts']),
+            'orderby'        => sanitize_key($atts['orderby']),
+            'order'   => strtoupper($atts['order']) === 'ASC' ? 'ASC' : 'DESC',
         ];
 
         if (!empty($atts['category'])) {
