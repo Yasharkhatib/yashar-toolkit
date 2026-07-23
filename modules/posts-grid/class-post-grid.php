@@ -55,6 +55,7 @@ class YTK_Post_Grid {
         [
             'posts' => 6,
             'columns' => 3,
+            'category' => '',
         ],
         $atts,
         'ytk_posts_grid'
@@ -66,6 +67,14 @@ class YTK_Post_Grid {
             'post_status'    => 'publish',
             'posts_per_page' => intval($atts['posts']),
         ];
+
+        if (!empty($atts['category'])) {
+
+            $args['category_name'] = sanitize_text_field($atts['category']);
+
+        }
+
+        
 
 
         $query = new WP_Query($args);
