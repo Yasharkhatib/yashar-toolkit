@@ -54,6 +54,7 @@ class YTK_Post_Grid {
     $atts = shortcode_atts(
         [
             'posts' => 6,
+            'columns' => 3,
         ],
         $atts,
         'ytk_posts_grid'
@@ -63,11 +64,13 @@ class YTK_Post_Grid {
         $args = [
             'post_type'      => 'post',
             'post_status'    => 'publish',
-            'posts_per_page' => (int) $atts['posts'],
+            'posts_per_page' => intval($atts['posts']),
         ];
 
 
         $query = new WP_Query($args);
+
+        $columns = max(1, min(6, intval($atts['columns'])));
 
 
         ob_start();

@@ -1,4 +1,7 @@
-<div class="ytk-post-grid">
+<div
+    class="ytk-post-grid"
+    style="--ytk-columns: <?php echo esc_attr($columns); ?>;"
+>
 
 <?php while ($query->have_posts()) : $query->the_post(); ?>
 
